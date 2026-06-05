@@ -20,3 +20,7 @@ print(type(range(10)))
 for i in range(1, 10 + 1, 2):
     print(i, end=" ")
 print()
+
+for i in range(len(message)): # 14
+    print(message[i], end=" ")
+print()
