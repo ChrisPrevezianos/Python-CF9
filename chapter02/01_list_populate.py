@@ -12,8 +12,14 @@ print()
 #     print(f"Index: {index}, value:{value}")
 
 products = ["Melon", "Banana", "Fig", "Orange"]
-for index, value in enumerate(products, start=1):
-    print(f"{index}. {value}")
+for index, value in enumerate(products): #(0, "Melon"), (1, "Banana"), (2, "Fig"), (3, "Orange")
+    if value == "Fig":
+        break
+
+print(f"index: {index}, value: {value}")
+
+# for index, value in enumerate(products, start=1):
+#     print(f"{index}. {value}")
 
 # Python's loop variables persist after the loop ends
 print(f"\nVariable 'age' after the loop: {age}")
