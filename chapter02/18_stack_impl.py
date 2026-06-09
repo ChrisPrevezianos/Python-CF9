@@ -1,0 +1,85 @@
+import re
+
+stack = []
+num = 0
+
+def push(list, item):
+    list.append(item)
+
+def pop(list):
+    if list:
+        return list.pop()
+    else:
+        print("Stack is empty!")
+
+def print_stack(list):
+    if list:
+        print("Current Stack:", list)
+    else:
+        print("Stack is empty!")
+
+def print_menu():
+    print("1. Insert to top")
+    print("2. Get from top")
+    print("3. Print Stack")
+    print("4. q\Q for Quit")
+
+def get_choice():
+    return input("Please provide a choice:\n")
+
+def main():
+    choice = 0
+    num = 0
+    out_num = 0
+
+    while True:
+        print_menu()
+        choice = get_choice()
+
+        if not choice:
+            continue
+
+        if choice == "q" or choice == "Q": # choice.lower() == "q" # choice in ["q", "Q"]
+            break
+        # Define a pattern to check if the input choice is single digit
+        # r: Raw string literal
+        # ^: Assert position to start of the string
+        # \d: Matched any digit (0-9).
+        # \d+: Matches any digit (0-9). These digit can be more than 1.
+        # $: Asserts position at the end of the string.
+        pattern = r'^\d$'
+        valid = re.match(pattern, choice)
+
+        if not valid:
+            print("Error in choice")
+            continue
+
+        choice = int(choice)
+
+        match choice:
+            case 1:
+                num = input("Please isnert a number: ")
+                pattern = r'^\d+$'
+                valid = re.match(pattern, num)
+
+                if not valid:
+                    print("Error")
+                    continue
+
+                num = int(num)
+                push(stack, num)
+                print(str(num) + " inserted")
+
+            case 2:
+                out_num = pop(stack)
+                if out_num is not None:
+                    print("You got:", out_num)
+
+            case 3:
+                print_stack(stack)
+
+            case _:
+                print("Not valid choice")
+
+if __name__ == "__main__":
+    main()
