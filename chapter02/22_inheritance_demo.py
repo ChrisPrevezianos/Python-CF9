@@ -40,5 +40,11 @@ def main():
     print(derived._Base__private)
     print(derived._Derived__private)
 
+    # print(base.__private)
+
+    print("=" * 31)
+    base.__private = "SHFHS"
+    print(base.__private)
+
 if __name__ == "__main__":
     main()   
