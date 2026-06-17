@@ -1,0 +1,28 @@
+import time
+ 
+def log_calls(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling function '{func.__name__}' with arguments {args} and keyword arguments {kwargs}")
+        return func(*args, **kwargs)
+    return wrapper
+ 
+def measure_time(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        print(f"Execution time of '{func.__name__}': {end_time - start_time:.6f} seconds")
+        return result
+    return wrapper
+
+@log_calls
+@measure_time
+def say_hello(name):
+    return f"Hello {name}!"
+ 
+def main():
+    print(say_hello("Alice"))
+    print(say_hello("Bob"))
+ 
+if __name__ == "__main__":
+    main()
